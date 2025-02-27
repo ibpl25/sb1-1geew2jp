@@ -1,0 +1,63 @@
+# Netlify Configuration File
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+# Ensure Netlify Functions Are Not Overwritten
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  external_node_modules = ["node-fetch"]
+  included_files = ["netlify/functions/**/*"]
+
+# Redirects for API Endpoints
+[[redirects]]
+  from = "/api/acuity/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+  force = true
+  headers = { Access-Control-Allow-Origin = "*" }
+
+[[redirects]]
+  from = "/api/acuity/availability"
+  to = "/.netlify/functions/availability"
+  status = 200
+  force = true
+  headers = { Access-Control-Allow-Origin = "*" }
+
+[[redirects]]
+  from = "/api/acuity/appointments"
+  to = "/.netlify/functions/appointments"
+  status = 200
+  force = true
+  headers = { Access-Control-Allow-Origin = "*" }
+
+[[redirects]]
+  from = "/api/acuity/book"
+  to = "/.netlify/functions/book"
+  status = 200
+  force = true
+  headers = { Access-Control-Allow-Origin = "*" }
+
+# Default Redirect for SPA (Fixes 404 on refresh)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Define Environment Variables for Build
+[build.environment]
+  NODE_VERSION = "18"
+  VITE_SUPABASE_URL = "https://saemrxugbiuquhbbojng.supabase.co"
+  VITE_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNhZW1yeHVnYml1cXVoYmJvam5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA1Mjk5ODYsImV4cCI6MjA1NjEwNTk4Nn0.L2P3PLej0eqD2v5YB1hcBuaHwIkATfgb3dqdrhlcfrc"
+  ACUITY_USER_ID = "34363375"
+  ACUITY_API_KEY = "424d9decd515b8b16952aa5c641508ac"
+
+# Local Development Configuration
+[dev]
+  framework = "vite"
+  targetPort = 5173
+  port = 8888
+  command = "npm run dev"

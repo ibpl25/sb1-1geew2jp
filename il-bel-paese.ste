@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<site>
+    <localinfo sitename="Il Bel Paese Linguistics" ftporrdsserver="false" relativeTo="DOCUMENT" enablesitewide="true" serverurl="http://localhost:5173" serverpath="/" autoUpload="false" autopublishLocalChanges="false" user="" pw="" cache="true" cachePackages="true" cacheTemplates="true" allowUpload="true" allowDownload="true" allowDelete="true" allowRename="true" allowNewFolder="true">
+        <designnotes usedesignnotes="true" sharedesignnotes="false"/>
+        <autoupload autouploadfiles="false" autouploadpackages="false"/>
+    </localinfo>
+    <publishinfo SourceFolder="dist" publishFolder="/" maintainLinks="true" applyTemplateToPages="true" applyTemplateToFolders="true"/>
+    <serverlist/>
+    <cloaking enabled="true" patterns="false">
+        <cloakedfolder folder="node_modules"/>
+        <cloakedfolder folder=".git"/>
+        <cloakedfolder folder="dist"/>
+        <cloakedpattern pattern=".env"/>
+        <cloakedpattern pattern=".gitignore"/>
+        <cloakedpattern pattern="*.log"/>
+    </cloaking>
+    <contributorintegration enabled="false"/>
+</site>
